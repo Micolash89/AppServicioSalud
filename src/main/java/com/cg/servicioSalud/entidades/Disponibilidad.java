@@ -8,11 +8,16 @@ package com.cg.servicioSalud.entidades;
 import com.cg.servicioSalud.enumeraciones.Dia;
 import com.cg.servicioSalud.enumeraciones.Horario;
 import java.util.Date;
+import java.util.Map;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapKeyEnumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.Data;
@@ -29,14 +34,11 @@ public class Disponibilidad {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String Id;
-    
-    @Enumerated(EnumType.STRING)
-    private Dia dia;
-    
-    @Enumerated(EnumType.STRING)
-    private Horario horario;
-    
-    
+    private String id;
+    //
+    @ElementCollection
+    @CollectionTable(name = "disponibilidad_jornada", joinColumns = @JoinColumn(name = "disponibilidad_id"))
+    @MapKeyEnumerated(EnumType.STRING)
+    Map<Dia, Horario> jornada;
 
 }

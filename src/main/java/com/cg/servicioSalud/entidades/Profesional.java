@@ -7,20 +7,19 @@ package com.cg.servicioSalud.entidades;
 
 import com.cg.servicioSalud.enumeraciones.Modalidad;
 import java.util.List;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.GenericGenerator;
 
-/**
- *
- * @author JAVIER ESPINDOLA
- */
+
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -33,19 +32,21 @@ public class Profesional extends Usuario {
 
     private Double reputacion;
 
-    @OneToMany
-    private List<Disponibilidad> disponibilidad;//dia, horario
+    @OneToOne
+    private Disponibilidad disponibilidad;//dias: horarios
 
     @Enumerated(EnumType.STRING)
     private Modalidad modalidad;
 
     private String ubicacion;
 
-    @OneToMany
-    private List<String> obrasSociales;//dia, horario
+    @ElementCollection
+    private List<String> obrasSociales;
 
     private String especialidad;
-
-    private Boolean estado; //true = alta; false = baja
+    
+    private Double tarifa;
+    
+    private Boolean activo; //true = alta; false = baja
 
 }

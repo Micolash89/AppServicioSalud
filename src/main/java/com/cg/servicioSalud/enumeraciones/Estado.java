@@ -10,5 +10,5 @@ package com.cg.servicioSalud.enumeraciones;
  * @author JAVIER ESPINDOLA
  */
 public enum Estado {
-    PERNDIENTE, CANCELADO , COMPLETADO;
+  LIBRE , PENDIENTE, CANCELADO , COMPLETADO;
 }

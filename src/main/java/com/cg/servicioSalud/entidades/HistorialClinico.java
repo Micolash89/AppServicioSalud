@@ -30,6 +30,4 @@ public class HistorialClinico {
     @OneToOne
     private Turno turno;
 
-    
-    private String algo;
 }
