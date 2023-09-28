@@ -5,6 +5,7 @@
  */
 package com.cg.servicioSalud.entidades;
 
+import com.cg.servicioSalud.enumeraciones.Jornada;
 import com.cg.servicioSalud.enumeraciones.Modalidad;
 import java.util.List;
 import javax.persistence.ElementCollection;
@@ -13,6 +14,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import lombok.Data;
@@ -32,9 +34,10 @@ public class Profesional extends Usuario {
 
     private Double reputacion;
 
-    @OneToOne
-    private Disponibilidad disponibilidad;//dias: horarios
-
+    //JORANADA CAMBIARLO POR UNA LISTA MAS ADELANTE
+    @Enumerated(EnumType.STRING)
+    private Jornada disponibilidad;//lunesm
+    
     @Enumerated(EnumType.STRING)
     private Modalidad modalidad;
 
