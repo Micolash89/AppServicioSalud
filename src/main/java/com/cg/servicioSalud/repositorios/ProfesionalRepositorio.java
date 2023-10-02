@@ -19,6 +19,10 @@ import org.springframework.data.repository.query.Param;
 @Repository
 public interface ProfesionalRepositorio extends JpaRepository<Profesional, String>{
     // @Query("SELECT u FROM Usuario u WHERE u.email = :email")
+    
+    @Query("SELECT u FROM Profesional u WHERE u.email = :email")
+    public Profesional buscarPorEmail(@Param("email") String email);
+    
     @Query("SELECT p FROM Profesional p WHERE p.especialidad = :especialidad AND p.activo = true")
     public List <Profesional> buscarPorEspecialidad(@Param("especialidad") String especialidad);
 }

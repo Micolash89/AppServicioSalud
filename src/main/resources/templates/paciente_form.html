@@ -14,7 +14,7 @@
 
         <div class="col-md-7 col-lg-8">
             <h4 class="mb-3">Billing address</h4>
-            <form action="/profesional/registro" method="POST" class="needs-validation" novalidate="" enctype="multipart/form-data">
+            <form action="/paciente/registro" method="POST" class="needs-validation" novalidate="" enctype="multipart/form-data">
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <label for="firstName" class="form-label">First name</label>
@@ -23,16 +23,7 @@
                             Valid first name is required.
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <label for="firstName" class="form-label">modalida</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required="" name="modalidad">
-                        <div class="invalid-feedback">
-                            Valid first name is required.
-                        </div>
-                    </div>
-
-                    
-
+                 
                     <div class="col-12">
                         <label for="email" class="form-label">Email <span
                                 class="text-body-secondary"></span></label>
@@ -42,20 +33,6 @@
                         </div>
                     </div>
 
-                    <div class="col-12">
-                        <label for="address" class="form-label">ubicacion</label>
-                        <input name="ubicacion" type="text" class="form-control" id="address" placeholder="" required="">
-                        <div class="invalid-feedback">
-                            Please enter your shipping address.
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <label for="address" class="form-label">especialidad</label>
-                        <input name="especialidad"  type="text" class="form-control" id="address" placeholder="" required="">
-                        <div class="invalid-feedback">
-                            Please enter your shipping address.
-                        </div>
-                    </div>
 
                     <hr class="my-4">
                     <div class="col-12">
@@ -80,10 +57,11 @@
                         <input name="telefono" type="number" class="form-control" id="address2" placeholder="Apartment or suite">
                     </div>
                     <div class="col-12">
-                        <label for="address2" class="form-label">tarifa<span
+                        <label for="address2" class="form-label">obra social <span
                                 class="text-body-secondary">(Optional)</span></label>
-                        <input name="tarifa" type="number" class="form-control" id="address2" placeholder="Apartment or suite">
+                        <input name="obraSocial" type="number" class="form-control" id="address2" placeholder="Apartment or suite">
                     </div>
+                   
                     <div class="col-12">
                         <label for="address2" class="form-label">imagen<span
                                 class="text-body-secondary">(Optional)</span></label>

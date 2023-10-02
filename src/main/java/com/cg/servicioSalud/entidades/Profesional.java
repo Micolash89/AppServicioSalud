@@ -44,7 +44,7 @@ public class Profesional extends Usuario {
     private String ubicacion;
 
     @ElementCollection
-    private List<String> obrasSociales;
+    private List<String> obrasSociales; // id - string / clave foranea(id fprofesional)
 
     private String especialidad;
     
