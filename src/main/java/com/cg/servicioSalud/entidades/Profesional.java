@@ -14,9 +14,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.GenericGenerator;
@@ -35,9 +32,11 @@ public class Profesional extends Usuario {
     private Double reputacion;
 
     //JORANADA CAMBIARLO POR UNA LISTA MAS ADELANTE
-    @Enumerated(EnumType.STRING)
-    private Jornada disponibilidad;//lunesm
+   // @Enumerated(EnumType.STRING)
+   // private Jornada disponibilidad;//lunesm
     
+    private String disponibilidad; //"0m1m2m3m4m5m6m"//sino esta es no existe
+                                    //m mañana, t tarde, n noche
     @Enumerated(EnumType.STRING)
     private Modalidad modalidad;
 

@@ -13,6 +13,7 @@ import com.cg.servicioSalud.enumeraciones.Modalidad;
 import com.cg.servicioSalud.enumeraciones.Rol;
 import com.cg.servicioSalud.exepciones.MiException;
 import com.cg.servicioSalud.repositorios.ProfesionalRepositorio;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +40,7 @@ public class ProfesionalServicio {
     @Transactional
     public void crearProfesional(String nombreCompleto, String email,
             String clave, Long telefono, Rol rol, MultipartFile archivo,
-            Jornada disponibilidad, List<String> obraSocial, Modalidad modalidad,
+            String disponibilidad, List<String> obraSocial, Modalidad modalidad,
             String ubicacion, String especialidad, Double tarifa) throws MiException {
 
         //funcion validad
@@ -50,7 +51,7 @@ public class ProfesionalServicio {
         profesional.setNombreCompleto(nombreCompleto);
         profesional.setTarifa(tarifa);
         profesional.setDisponibilidad(disponibilidad);//esto es un atributo de la clase profesional
-        profesional.setActivo(Boolean.FALSE);
+        profesional.setActivo(Boolean.TRUE);
         profesional.setClave(clave);
         profesional.setRol(rol);
         profesional.setEspecialidad(especialidad);
@@ -67,11 +68,41 @@ public class ProfesionalServicio {
 
         profesionalRepositorio.save(profesional);
     }
+    
+   public List<Profesional> listarProfesionales(){
+   
+       List<Profesional> profesionales = new ArrayList();
+       
+       profesionales = profesionalRepositorio.findAll();
+       
+       return profesionales; 
+   
+   }
 
+   
+   public List<Profesional> buscarXEspecialidad(String especialidad){
+   
+       List<Profesional> profesionales = new ArrayList();
+       
+       profesionales = profesionalRepositorio.buscarPorEspecialidad(especialidad);
+       
+       return profesionales; 
+       
+   }
+   public List<Profesional> buscarActivos(){
+   
+       List<Profesional> profesionales = new ArrayList();
+       
+       profesionales = profesionalRepositorio.buscarActivos();
+       
+       return profesionales; 
+       
+   }
+   
     @Transactional
     public void modificarProfesional(String id, String nombreCompleto, String email,
             String clave, Long telefono, Rol rol, MultipartFile archivo,
-            Jornada disponibilidad, List<String> obraSocial, Modalidad modalidad,
+            String disponibilidad, List<String> obraSocial, Modalidad modalidad,
             String ubicacion, String especialidad, Double tarifa, Boolean activo) throws MiException {
 
        
@@ -92,7 +123,7 @@ public class ProfesionalServicio {
             profesional.setNombreCompleto(nombreCompleto);
             profesional.setTarifa(tarifa);
             profesional.setDisponibilidad(disponibilidad);
-            profesional.setActivo(Boolean.FALSE);
+            profesional.setActivo(Boolean.TRUE);//cambiar
             profesional.setClave(clave);
             profesional.setRol(rol);
             profesional.setEspecialidad(especialidad);

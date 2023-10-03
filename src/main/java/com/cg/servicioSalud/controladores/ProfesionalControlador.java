@@ -1,4 +1,3 @@
-
 package com.cg.servicioSalud.controladores;
 
 import com.cg.servicioSalud.entidades.Imagen;
@@ -36,17 +35,26 @@ public class ProfesionalControlador {
 
     @PostMapping("/registro")
     public String registro(@RequestParam String nombreCompleto, @RequestParam String email,
-            @RequestParam String clave, @RequestParam Long telefono,@RequestParam(required = false) MultipartFile archivo, 
-            @RequestParam(required = false) Jornada disponibilidad, @RequestParam(required = false) List<String> obraSocial,
+            @RequestParam String clave, @RequestParam Long telefono, @RequestParam(required = false) MultipartFile archivo,
+            @RequestParam(required = false) String disponibilidad, @RequestParam(required = false) List<String> obraSocial,
             @RequestParam(required = false) String modalidad,
-            @RequestParam String ubicacion, @RequestParam String especialidad, @RequestParam Double tarifa) {
+            @RequestParam String ubicacion, @RequestParam String especialidad, @RequestParam Double tarifa,
+            @RequestParam(required = false) String lunes, @RequestParam(required = false) String martes, @RequestParam(required = false) String miercoles,
+            @RequestParam(required = false) String jueves, @RequestParam(required = false) String viernes, @RequestParam(required = false) String sabado, @RequestParam(required = false) String domingo) {
+//    public String registro(@RequestParam String nombreCompleto, @RequestParam String email,
+//            @RequestParam String clave, @RequestParam Long telefono,@RequestParam(required = false) MultipartFile archivo, 
+//            @RequestParam(required = false) String disponibilidad, @RequestParam(required = false) List<String> obraSocial,
+//            @RequestParam(required = false) String modalidad,
+//            @RequestParam String ubicacion, @RequestParam String especialidad, @RequestParam Double tarifa) {
 
-        List<String> obra= new ArrayList();
+        List<String> obra = new ArrayList();
+
+            disponibilidad = domingo+ lunes+martes+miercoles+jueves+viernes+sabado;
         
         try {
             profesionalServicio.crearProfesional(nombreCompleto, email, clave, telefono, Rol.USER,
-                                            archivo, Jornada.LUNESM, obra, Modalidad.PRECENCIAL, 
-                                            ubicacion, especialidad, tarifa);
+                    archivo, disponibilidad, obra, Modalidad.PRECENCIAL,
+                    ubicacion, especialidad, tarifa);
         } catch (MiException ex) {
             Logger.getLogger(ProfesionalControlador.class.getName()).log(Level.SEVERE, null, ex);
         }

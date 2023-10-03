@@ -6,6 +6,7 @@
 package com.cg.servicioSalud.repositorios;
 
 import com.cg.servicioSalud.entidades.Turno;
+import java.util.Date;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,4 +23,7 @@ public interface TurnoRepositorio extends JpaRepository<Turno, String>{
     @Query("SELECT t FROM Turno t WHERE t.profesional.id = :id")
     public List<Turno> buscarPorProfesional(@Param("id") String id);
     
+    
+    @Query("SELECT t FROM Turno t WHERE t.profesional.id =:id and t.fecha =:fecha")
+    public Turno buscarDisponibilidad(@Param("id") String id, @Param("fecha") Date fecha);
 }
