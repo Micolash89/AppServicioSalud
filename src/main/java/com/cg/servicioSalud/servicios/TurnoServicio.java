@@ -10,6 +10,7 @@ import com.cg.servicioSalud.repositorios.TurnoRepositorio;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,8 +43,8 @@ public class TurnoServicio {
 
         try {
             SimpleDateFormat formatoFecha = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
-        Date fecha = formatoFecha.parse(dia);
-        turno.setFecha(fecha); // arregla esto o cambiar a atributo string /// depues veo q hacer con esto
+            Date fecha = formatoFecha.parse(dia);
+            turno.setFecha(fecha); // arregla esto o cambiar a atributo string /// depues veo q hacer con esto
         } catch (ParseException ex) {
             Logger.getLogger(TurnoServicio.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -63,4 +64,36 @@ public class TurnoServicio {
 
     }
 
+    public List<Turno> listarTurnosPorP(String idProfesional) {
+
+        return turnoRepositorio.listarTurnosPorP(idProfesional);
+    }
+
+    public Turno getOne(String id) {
+
+        return turnoRepositorio.findById(id).get();
+
+    }
+
+    @Transactional
+    public void cancelarTurno(String id){
+    
+        Turno turno = getOne(id);
+        
+        turno.setEstado(Estado.CANCELADO);
+    
+        turnoRepositorio.save(turno);
+        
+    }
+    @Transactional
+    public void completarTurno(String id){
+    
+        Turno turno = getOne(id);
+        
+        turno.setEstado(Estado.COMPLETADO);
+    
+        turnoRepositorio.save(turno);
+        
+    }
+    
 }

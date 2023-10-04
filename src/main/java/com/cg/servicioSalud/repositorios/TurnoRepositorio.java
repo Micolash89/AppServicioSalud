@@ -13,10 +13,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-/**
- *
- * @author JAVIER ESPINDOLA
- */
+
 @Repository
 public interface TurnoRepositorio extends JpaRepository<Turno, String>{
     
@@ -26,4 +23,8 @@ public interface TurnoRepositorio extends JpaRepository<Turno, String>{
     
     @Query("SELECT t FROM Turno t WHERE t.profesional.id =:id and t.fecha =:fecha")
     public Turno buscarDisponibilidad(@Param("id") String id, @Param("fecha") Date fecha);
+    
+    
+    @Query("SELECT t FROM Turno t WHERE t.profesional.id =:id and t.estado ='PENDIENTE'")
+    public List <Turno> listarTurnosPorP(@Param("id") String id);
 }

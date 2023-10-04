@@ -37,6 +37,7 @@ public class Profesional extends Usuario {
     
     private String disponibilidad; //"0m1m2m3m4m5m6m"//sino esta es no existe
                                     //m mañana, t tarde, n noche
+                                    //date 
     @Enumerated(EnumType.STRING)
     private Modalidad modalidad;
 

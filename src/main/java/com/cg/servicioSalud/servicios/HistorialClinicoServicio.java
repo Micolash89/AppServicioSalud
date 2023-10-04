@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cg.servicioSalud.enumeraciones;
+package com.cg.servicioSalud.servicios;
 
-/**
- *
- * @author JAVIER ESPINDOLA
- */
-public enum Estado {
-  PENDIENTE, CANCELADO , COMPLETADO;
+import org.springframework.stereotype.Service;
+
+@Service
+public class HistorialClinicoServicio {
+    
 }

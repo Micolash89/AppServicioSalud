@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -15,28 +17,30 @@
 
         <div class="col-md-7 col-lg-8">
             <h4 class="mb-3">Billing address</h4>
-            <form action="/profesional/registro" method="POST" class="needs-validation" novalidate="" enctype="multipart/form-data">
+            <form action="/profesional/registro" method="POST" class="needs-validation" novalidate=""
+                enctype="multipart/form-data">
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <label for="firstName" class="form-label">First name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required="" name="nombreCompleto">
+                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required=""
+                            name="nombreCompleto">
                         <div class="invalid-feedback">
                             Valid first name is required.
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <label for="firstName" class="form-label">modalida</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required="" name="modalidad">
+                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required=""
+                            name="modalidad">
                         <div class="invalid-feedback">
                             Valid first name is required.
                         </div>
                     </div>
 
-                    
+
 
                     <div class="col-12">
-                        <label for="email" class="form-label">Email <span
-                                class="text-body-secondary"></span></label>
+                        <label for="email" class="form-label">Email <span class="text-body-secondary"></span></label>
                         <input name="email" type="email" class="form-control" id="email" placeholder="you@example.com">
                         <div class="invalid-feedback">
                             Please enter a valid email address for shipping updates.
@@ -45,14 +49,16 @@
 
                     <div class="col-12">
                         <label for="address" class="form-label">ubicacion</label>
-                        <input name="ubicacion" type="text" class="form-control" id="address" placeholder="" required="">
+                        <input name="ubicacion" type="text" class="form-control" id="address" placeholder=""
+                            required="">
                         <div class="invalid-feedback">
                             Please enter your shipping address.
                         </div>
                     </div>
                     <div class="col-12">
                         <label for="address" class="form-label">especialidad</label>
-                        <input name="especialidad"  type="text" class="form-control" id="address" placeholder="" required="">
+                        <input name="especialidad" type="text" class="form-control" id="address" placeholder=""
+                            required="">
                         <div class="invalid-feedback">
                             Please enter your shipping address.
                         </div>
@@ -61,14 +67,16 @@
                     <hr class="my-4">
                     <div class="col-12">
                         <label for="address" class="form-label">clave</label>
-                        <input name="clave" type="password" class="form-control" id="address" placeholder="" required="">
+                        <input name="clave" type="password" class="form-control" id="address" placeholder=""
+                            required="">
                         <div class="invalid-feedback">
                             Please enter your shipping address.
                         </div>
                     </div>
                     <div class="col-12">
                         <label for="address" class="form-label">Repetir Clave</label>
-                        <input name="clave2" type="password" class="form-control" id="address" placeholder="" required="">
+                        <input name="clave2" type="password" class="form-control" id="address" placeholder=""
+                            required="">
                         <div class="invalid-feedback">
                             Please enter your shipping address.
                         </div>
@@ -78,19 +86,22 @@
                     <div class="col-12">
                         <label for="address2" class="form-label">telefono <span
                                 class="text-body-secondary">(Optional)</span></label>
-                        <input name="telefono" type="number" class="form-control" id="address2" placeholder="Apartment or suite">
+                        <input name="telefono" type="number" class="form-control" id="address2"
+                            placeholder="Apartment or suite">
                     </div>
                     <div class="col-12">
                         <label for="address2" class="form-label">tarifa<span
                                 class="text-body-secondary">(Optional)</span></label>
-                        <input name="tarifa" type="number" class="form-control" id="address2" placeholder="Apartment or suite">
+                        <input name="tarifa" type="number" class="form-control" id="address2"
+                            placeholder="Apartment or suite">
                     </div>
                     <div class="col-12">
                         <label for="address2" class="form-label">imagen<span
                                 class="text-body-secondary">(Optional)</span></label>
-                        <input name="archivo" type="file" class="form-control" id="address2" placeholder="Apartment or suite">
+                        <input name="archivo" type="file" class="form-control" id="address2"
+                            placeholder="Apartment or suite">
                     </div>
-                    
+
 
                     <!-- <div class="col-md-5">
                         <label for="country" class="form-label">Country</label>
@@ -124,7 +135,20 @@
                 </div>
 
                 <hr class="my-4">
-<!-- 
+
+                <label ><input type="checkbox" name="obraSocial" value="osde" >osde</label>
+                <label ><input type="checkbox" name="obraSocial" value="osecac" >osecac</label>
+                <label ><input type="checkbox" name="obraSocial" value="pami" >pami</label>
+
+                <div class="col-12">
+                    <label for="otra" class="form-label">otra Obra Social (separar por espacio)<span
+                            class="text-body-secondary">(Optional)</span></label>
+                    <input name="otraObraSocial" type="text" class="form-control" id="otra"
+                        placeholder="otra obra social">
+                </div>
+
+                <hr class="my-4">
+                <!-- 
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="same-address">
                     <label class="form-check-label" for="same-address">Shipping address is the same as my billing
@@ -138,30 +162,30 @@
 
                 <hr class="my-4">
 
-                
-            <input type="radio" th:value="1m" name="lunes" id="">
-            <input type="radio" th:value="1t" name="lunes" id="">
-            <input type="radio" th:value="1n" name="lunes" id="">
-            <input type="radio" th:value="2m" name="martes" id="">
-            <input type="radio" th:value="2t" name="martes" id="">
-            <input type="radio" th:value="2n" name="martes" id="">
-            <input type="radio" th:value="3m" name="miercoles" id="">
-            <input type="radio" th:value="3t" name="miercoles" id="">
-            <input type="radio" th:value="3n" name="miercoles" id="">
-            <input type="radio" th:value="4m" name="jueves" id="">
-            <input type="radio" th:value="4t" name="jueves" id="">
-            <input type="radio" th:value="4n" name="jueves" id="">
-            <input type="radio" th:value="5m" name="viernes" id="">
-            <input type="radio" th:value="5t" name="viernes" id="">
-            <input type="radio" th:value="5n" name="viernes" id="">
-            <input type="radio" th:value="6m" name="sabado" id="">
-            <input type="radio" th:value="6t" name="sabado" id="">
-            <input type="radio" th:value="6n" name="sabado" id="">
-            <input type="radio" th:value="0m" name="domingo" id="">
-            <input type="radio" th:value="0t" name="domingo" id="">
-            <input type="radio" th:value="0n" name="domingo" id="">
-               
-                
+
+                <input type="radio" th:value="1m" name="lunes" id="">
+                <input type="radio" th:value="1t" name="lunes" id="">
+                <input type="radio" th:value="1n" name="lunes" id="">
+                <input type="radio" th:value="2m" name="martes" id="">
+                <input type="radio" th:value="2t" name="martes" id="">
+                <input type="radio" th:value="2n" name="martes" id="">
+                <input type="radio" th:value="3m" name="miercoles" id="">
+                <input type="radio" th:value="3t" name="miercoles" id="">
+                <input type="radio" th:value="3n" name="miercoles" id="">
+                <input type="radio" th:value="4m" name="jueves" id="">
+                <input type="radio" th:value="4t" name="jueves" id="">
+                <input type="radio" th:value="4n" name="jueves" id="">
+                <input type="radio" th:value="5m" name="viernes" id="">
+                <input type="radio" th:value="5t" name="viernes" id="">
+                <input type="radio" th:value="5n" name="viernes" id="">
+                <input type="radio" th:value="6m" name="sabado" id="">
+                <input type="radio" th:value="6t" name="sabado" id="">
+                <input type="radio" th:value="6n" name="sabado" id="">
+                <input type="radio" th:value="0m" name="domingo" id="">
+                <input type="radio" th:value="0t" name="domingo" id="">
+                <input type="radio" th:value="0n" name="domingo" id="">
+
+
 
                 <hr class="my-4">
 
@@ -170,7 +194,9 @@
         </div>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

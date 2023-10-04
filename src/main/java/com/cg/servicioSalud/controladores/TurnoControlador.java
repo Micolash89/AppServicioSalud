@@ -55,7 +55,7 @@ public class TurnoControlador {
         //"0m1m2m3m4m5m6m"
         
         //hacer calendario del profesional personalizado
-        for (int i = 1; i <= 30; i++) {
+        for (int i = 1; i <= 60; i++) {
 
             Date dia = new Date();
 
@@ -69,7 +69,6 @@ public class TurnoControlador {
             // Crear una nueva instancia de Date a partir del tiempo en milisegundos modificado
             Date nuevoDia = new Date(tiempoEnMilisegundos);
             Integer j = nuevoDia.getDay();//0-1-2-3-4-5-6
-            
             
             if(profesional.getDisponibilidad().contains(j.toString())&& turnoServicio.buscarDisponibilidad(profesional.getId(),nuevoDia)==null)
                 calendario.add(nuevoDia.toString());
