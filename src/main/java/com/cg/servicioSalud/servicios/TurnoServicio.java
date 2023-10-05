@@ -37,9 +37,9 @@ public class TurnoServicio {
 
         Profesional profesional = profesionalRepositorio.findById(idProfesional).get();//hacerlooptional y verificar si existe
 
-        Paciente paciente = pacienteRepositorio.findById("cdd17546-5edc-4d08-9626-59f2bc365ee8").get();
+        Paciente paciente = pacienteRepositorio.findById("8613f59c-cba3-4c6c-86c3-762a70f26d2e").get();
 
-        System.out.println(dia);
+    
 
         try {
             SimpleDateFormat formatoFecha = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
@@ -58,6 +58,23 @@ public class TurnoServicio {
         return (Turno) turnoRepositorio.save(turno);
     }
 
+    @Transactional
+    public Turno modificarTurno(String idTurno, String dia){
+    
+        Turno turno = getOne(idTurno);
+        
+         try {
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
+            Date fecha = formatoFecha.parse(dia);
+            turno.setFecha(fecha); // arregla esto o cambiar a atributo string /// depues veo q hacer con esto
+        } catch (ParseException ex) {
+            Logger.getLogger(TurnoServicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+         return turnoRepositorio.save(turno);
+    
+    }
+    
     public Turno buscarDisponibilidad(String idProfesional, Date fecha) {
 
         return turnoRepositorio.buscarDisponibilidad(idProfesional, fecha);
@@ -67,6 +84,11 @@ public class TurnoServicio {
     public List<Turno> listarTurnosPorP(String idProfesional) {
 
         return turnoRepositorio.listarTurnosPorP(idProfesional);
+    }
+    
+    public List<Turno> listarTurnosPorPCompletos(String idProfesional) {
+
+        return turnoRepositorio.listarTurnosPorPCompletos(idProfesional);
     }
 
     public Turno getOne(String id) {

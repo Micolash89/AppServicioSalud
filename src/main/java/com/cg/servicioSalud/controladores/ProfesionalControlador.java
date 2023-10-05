@@ -1,18 +1,16 @@
 package com.cg.servicioSalud.controladores;
 
-import com.cg.servicioSalud.entidades.Imagen;
 import com.cg.servicioSalud.entidades.Turno;
-import com.cg.servicioSalud.enumeraciones.Jornada;
 import com.cg.servicioSalud.enumeraciones.Modalidad;
 import com.cg.servicioSalud.enumeraciones.Rol;
 import com.cg.servicioSalud.exepciones.MiException;
+import com.cg.servicioSalud.servicios.HistorialClinicoServicio;
 import com.cg.servicioSalud.servicios.ProfesionalServicio;
 import com.cg.servicioSalud.servicios.TurnoServicio;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.mail.Multipart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -32,6 +30,9 @@ public class ProfesionalControlador {
 
     @Autowired
     private TurnoServicio turnoServicio;
+    
+    @Autowired
+    private HistorialClinicoServicio historialClinicoServicio;
     
     @GetMapping("/registrar")
     public String registrar() {
@@ -84,11 +85,13 @@ public class ProfesionalControlador {
          
          //hacer lo del sesion para profesional
          
-         String idProfesional = "0002df83-bca4-4ecb-a67e-1ccfde22003f";
+         String idProfesional = "e910573f-be34-4245-9976-0d670eb306ee";
          
          List <Turno> turnos = turnoServicio.listarTurnosPorP(idProfesional);
+         List <Turno> turnosC = turnoServicio.listarTurnosPorPCompletos(idProfesional);
          
          modelo.addAttribute("turnos", turnos);
+         modelo.addAttribute("turnosC", turnosC);
          
          return "lista_turnos.html";
          
@@ -102,15 +105,48 @@ public class ProfesionalControlador {
          return "redirect:../mis-turnos";
      
      }
-     @GetMapping("/completar-turno/{id}")
-     public String completarTurno(@PathVariable String id){
+     
+     @GetMapping("/modificar-turno/{id}")
+     public String modificarTurno(@PathVariable String id, ModelMap modelo){
          
-         turnoServicio.completarTurno(id);
+         Turno turno = turnoServicio.getOne(id);
          
-         return "redirect:../mis-turnos";
+         modelo.addAttribute("turno", turno);
+         
+         
+         return "modificar_turno.html";
      
      }
      
+     @PostMapping("/completar-turno")
+     public String completarTurno( @RequestParam String idTurno,  @RequestParam String nota, ModelMap modelo){
      
+         turnoServicio.completarTurno(idTurno);
+         
+         historialClinicoServicio.crearHistorialClinico(idTurno, nota);
+         
+         List <Turno> turnos = turnoServicio.listarTurnosPorP(turnoServicio.getOne(idTurno).getProfesional().getId());
+         List <Turno> turnosC = turnoServicio.listarTurnosPorPCompletos(turnoServicio.getOne(idTurno).getProfesional().getId());
+         
+         modelo.addAttribute("turnos", turnos);
+         modelo.addAttribute("turnosC", turnosC);
+         
+         return "lista_turnos.html";
      
+     }
+     
+     @PostMapping("/cambiar-turno")
+      public String cambiarTurno( @RequestParam String idTurno,  @RequestParam String dia, ModelMap modelo){
+     
+         turnoServicio.modificarTurno(idTurno,dia);
+         
+         List <Turno> turnos = turnoServicio.listarTurnosPorP(turnoServicio.getOne(idTurno).getProfesional().getId());
+         List <Turno> turnosC = turnoServicio.listarTurnosPorPCompletos(turnoServicio.getOne(idTurno).getProfesional().getId());
+         
+         modelo.addAttribute("turnos", turnos);
+         modelo.addAttribute("turnosC", turnosC);
+         
+         return "lista_turnos.html";
+          
+      }
 }

@@ -16,13 +16,13 @@
     <body>
         
         <div class="container m-5" >
-
+            <h2 class="text-center">Turnos Pendientes</h2>
+            <p class="text-center" th:if="${turnos.isEmpty()}">usted no tiene turnos pendiente</p>
             <table class="table table-dark">
                 <thead class="align-items-center">
                     <tr >
                         <th scope="col">Id turno</th>
                         <th scope="col">Nombre paciente</th>
-                      
                         <th scope="col">estado</th>
                         <th scope="col">Cancelar</th>
                         <th scope="col">competar</th>
@@ -37,35 +37,54 @@
 
                         <td th:text="${turno.estado}"></td>
 
+
                         <td>
-                            <a th:href= "@{/profesional/cancelar-turno/__${turno.id}__}"><i class="fas fa-feather-alt"></i>Cancelar</a>
+                            <a class="btn btn-danger" th:href= "@{/profesional/modificar-turno/__${turno.id}__}"><i class="fas fa-feather-alt "></i>modificar</a>
+                        </td>
+
+                        <!-- <td>
+                            <a class="btn btn-danger" th:href= "@{/profesional/cancelar-turno/__${turno.id}__}"><i class="fas fa-feather-alt "></i>Cancelar</a>
                         </td>
 
                         <td>
-                            <a th:href= "@{/profesional/completar-turno/__${turno.id}__}"><i class="fas fa-feather-alt"></i>Completar</a>
-                        </td>
+                            <a class="btn btn-success" th:href= "@{/profesional/completar-turno/__${turno.id}__}"><i class="fas fa-feather-alt "></i>Completar</a>
+                        </td> -->
 
                     </tr>
 
                 </tbody>
             </table>
 
-           
+        </div>
+        <div class="container m-5" >
+                <h2 class="text-center">Historial de turnos</h2>
+            <table class="table table-dark">
+                <thead class="align-items-center">
+                    <tr >
+                        <th scope="col">Id turno</th>
+                        <th scope="col">Nombre paciente</th>
+                      
+                        <th scope="col">estado</th>
+                     
+                    </tr>
+                </thead>
+                <tbody th:each="turno : ${turnosC}"> 
+                    <tr>
+                        <th scope="row" th:text="${turno.id}"></th>
+                        <td th:text="${turno.paciente.nombreCompleto}"></td>
+                        
 
-          
+                    
+                        <td class="text-bg-success " th:text="${turno.estado}"></td>
+
+                    </tr>
+
+                </tbody>
+            </table>
 
         </div>
 
-        <footer class="text-muted py-5">
-            <div class="containerFooter">
-                <p class="mb-1">Album example is &copy; Bootstrap,<br>but please download and customize it for yourself!</p>
-                <p class="mb-0">New to Bootstrap? <a href="/"><br>Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
-                <p class="float-end mb-1">
-                    <a href="#" style="text-decoration:none"><span>⬆️</span> Back to top</a>
-                </p>
-            </div>
-        </footer>
-
+       
 
 
         <!-- JavaScript Bundle with Popper -->
@@ -78,4 +97,15 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
 
+     <footer class="text-muted py-5">
+            <div class="containerFooter">
+                <p class="mb-1">Album example is &copy; Bootstrap,<br>but please download and customize it for yourself!</p>
+                <p class="mb-0">New to Bootstrap? <a href="/"><br>Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
+                <p class="float-end mb-1">
+                    <a href="#" style="text-decoration:none"><span>⬆️</span> Back to top</a>
+                </p>
+            </div>
+        </footer>
+
+    
 </html>

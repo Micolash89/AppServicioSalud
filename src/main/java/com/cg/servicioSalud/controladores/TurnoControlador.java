@@ -80,7 +80,7 @@ public class TurnoControlador {
         return "turno_form_doctor.html";
 
     }
-//ya me perdi esto deberia ser un get xd
+//ya me perdi esto deberia ser un get xd // falta id del paciente lo saco con session http
     @PostMapping("/registrarDoctor")
     public String registroDoctor(@RequestParam String idProfesional,String dia, String motivo, Double precioFinal,ModelMap modelo ) {//necesito el paciente es el usuario activo 
          
