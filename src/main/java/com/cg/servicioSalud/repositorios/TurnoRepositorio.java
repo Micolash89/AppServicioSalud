@@ -24,10 +24,17 @@ public interface TurnoRepositorio extends JpaRepository<Turno, String>{
     @Query("SELECT t FROM Turno t WHERE t.profesional.id =:id and t.fecha =:fecha")
     public Turno buscarDisponibilidad(@Param("id") String id, @Param("fecha") Date fecha);
     
-    
+    //profesionales
     @Query("SELECT t FROM Turno t WHERE t.profesional.id =:id and t.estado ='PENDIENTE'")
     public List <Turno> listarTurnosPorP(@Param("id") String id);
     
     @Query("SELECT t FROM Turno t WHERE t.profesional.id =:id and t.estado ='COMPLETADO'")
     public List <Turno> listarTurnosPorPCompletos(@Param("id") String id);
+    
+    //pacientes cambiarlo en paciente----
+    @Query("SELECT t FROM Turno t WHERE t.paciente.id =:id and t.estado ='PENDIENTE'")
+    public List <Turno> listarTurnosPorPa(@Param("id") String id);
+    
+    @Query("SELECT t FROM Turno t WHERE t.paciente.id =:id and t.estado ='COMPLETADO'")
+    public List <Turno> listarTurnosPorPaCompletos(@Param("id") String id);
 }

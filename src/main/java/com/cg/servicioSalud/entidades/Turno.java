@@ -32,7 +32,7 @@ public class Turno {
     private String id;
 
     @Temporal(TemporalType.DATE)
-    private Date fecha;
+    private Date fecha;//lunes 0
     
     @OneToOne
     private Paciente paciente;
@@ -47,4 +47,10 @@ public class Turno {
     
     private Double precioFinal;
     
+    //si el mañana solo muestra 4 turnos/// no hay horraris
+    private Integer horario; // hacer la version mejorada que ingresa un valor dependiendo del horario//1-2-3-4 m=8; /8-12//
+    
+    
 }
+
+

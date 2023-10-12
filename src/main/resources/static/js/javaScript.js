@@ -7,6 +7,4 @@ const btnModificar = document.getElementById("btnModificar");
 
     formulario.action = `/profesional/cambiar-turno`;
 
-    console.log("se pudo");
-
  });

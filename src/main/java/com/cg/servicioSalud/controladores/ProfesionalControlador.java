@@ -93,7 +93,7 @@ public class ProfesionalControlador {
          modelo.addAttribute("turnos", turnos);
          modelo.addAttribute("turnosC", turnosC);
          
-         return "lista_turnos.html";
+         return "lista_turnos_profesional.html";
          
      }
      

@@ -34,7 +34,7 @@ public class TurnoControlador {
     public String especialidad(ModelMap modelo) {
 
         //List<Profesional> profesionales = profesionalServicio.listarProfesionales();
-        List<Profesional> profesionales = profesionalServicio.buscarActivos();
+        List<Profesional> profesionales = profesionalServicio.buscarActivos();//nuscar activos por especialidad
 
         modelo.addAttribute("profesionales", profesionales);
 
@@ -50,30 +50,7 @@ public class TurnoControlador {
         modelo.addAttribute("profesional", profesional);
         //validar que el profesional que este disponible ese dia/hora, el paciente no tenga turnos ese dia/hora
 
-        List<String> calendario = new ArrayList();
-
-        //"0m1m2m3m4m5m6m"
-        
-        //hacer calendario del profesional personalizado
-        for (int i = 1; i <= 60; i++) {
-
-            Date dia = new Date();
-
-            // Obtener la representación en milisegundos de la fecha actual
-            long tiempoEnMilisegundos = dia.getTime();
-
-            // Sumar un día en milisegundos (86400000 milisegundos en un día)
-            long unDiaEnMilisegundos = 86400000*i;
-            tiempoEnMilisegundos += unDiaEnMilisegundos;
-
-            // Crear una nueva instancia de Date a partir del tiempo en milisegundos modificado
-            Date nuevoDia = new Date(tiempoEnMilisegundos);
-            Integer j = nuevoDia.getDay();//0-1-2-3-4-5-6
-            
-            if(profesional.getDisponibilidad().contains(j.toString())&& turnoServicio.buscarDisponibilidad(profesional.getId(),nuevoDia)==null)
-                calendario.add(nuevoDia.toString());
-                
-        }
+        List<String> calendario = turnoServicio.listarTurnos(profesional);//lista de string
        
         modelo.addAttribute("calendario", calendario);
         
